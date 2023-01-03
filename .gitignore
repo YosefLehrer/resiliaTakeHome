@@ -1,5 +1,6 @@
 # dependencies
 /back-end/node_modules
+/back-end/.node-persist
 /front-end/node_modules
 /node_modules
 /.pnp
@@ -17,6 +18,7 @@
 .env.development.local
 .env.test.local
 .env.production.local
+.vscode
 
 npm-debug.log*
 yarn-debug.log*

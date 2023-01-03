@@ -4,28 +4,26 @@ export default function App() {
   const [notifications, setNotifications] = useState([])
 
   const fetchNotifications = async () => {
-
     const response = await fetch("http://localhost:8081/notifications", {
       method: "GET"
     })
-    .then(response => response.json())
-    .then(data => {
-      setNotifications(data)
-      console.log(data)});
+    const responseJson = await response.json();
+    setNotifications(responseJson);
   }
 
-  const MappedNotifications = notifications.map(notification => {
-    console.log('notification :>> ', notification);
+  const MappedNotifications = ({notificationsArray}) => {
     return (
-      <div>sup</div>
-    )
-  })
+      notificationsArray.map((notification, i) => {
+        return (
+          <div key={i} >{notification}</div>
+        )
+      }
+    ))
+  }
 
   return (<Fragment>
-    Hello World!
     <br />
     <button onClick={fetchNotifications}>Fetch Notifications</button>
-    {/* {!!notifications.length && } */}
-    <MappedNotifications />
+      {!!notifications.length && <MappedNotifications notificationsArray={notifications} />}
     </Fragment>);
 }
